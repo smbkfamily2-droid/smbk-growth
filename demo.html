@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تجربة تطبيق الحضانة | SMBK GROWTH</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#1b2559;--navy-2:#243074;--coral:#ff7a59;--coral-d:#e8613f;--cream:#fff8f1;--ink:#1d2140;--muted:#5d6385;--line:#e8e3dc;--green:#1c8a4b;--red:#c0392b;--radius:16px}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Cairo',system-ui,sans-serif;color:var(--ink);background:#d9dcee;line-height:1.6}
+  button,input,select{font:inherit}
+  .app{max-width:460px;min-height:100vh;margin:0 auto;background:var(--cream);position:relative;display:flex;flex-direction:column;box-shadow:0 0 40px #0002}
+  .top{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;padding:14px 16px}
+  .top .row1{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800}
+  .brand small{display:block;font-weight:600;color:#cbd0f5;font-size:.75rem;margin-top:-4px}
+  .brand .logo{width:36px;height:36px;border-radius:10px;background:#ffffff22;display:grid;place-items:center;font-size:1.2rem}
+  .chips{display:flex;gap:6px}
+  .chip{border:1.5px solid #ffffff77;background:transparent;color:#fff;border-radius:999px;padding:2px 12px;cursor:pointer;font-weight:700;font-size:.85rem}
+  .chip:hover{background:#ffffff22}
+  select.chip{appearance:none;padding:2px 10px}
+  select.chip option{color:#000}
+  .banner{background:#ffe9a8;color:#5a4400;font-size:.82rem;text-align:center;padding:5px 10px;font-weight:600}
+  main{flex:1;padding:16px 16px 96px}
+  h2{margin:0 0 12px;font-size:1.25rem;color:var(--navy)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+  .stat .n{font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1.2}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  .stat.warn .n{color:var(--red)} .stat.good .n{color:var(--green)}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin-bottom:14px}
+  .bar{height:12px;border-radius:99px;background:#eee7df;overflow:hidden;margin:8px 0 4px}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--coral),#ffb347);width:0}
+  .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:0}
+  .av{width:40px;height:40px;border-radius:50%;background:#ffece5;color:var(--coral-d);display:grid;place-items:center;font-weight:800;flex:none}
+  .item .info{flex:1;min-width:0}
+  .item .nm{font-weight:700}
+  .item .sm{font-size:.82rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tag{border-radius:99px;padding:2px 11px;font-size:.78rem;font-weight:700;white-space:nowrap}
+  .tag.ok{background:#dff5e7;color:var(--green)} .tag.no{background:#fde3e0;color:var(--red)} .tag.na{background:#eee;color:#666}
+  .btn{border:0;border-radius:999px;padding:8px 16px;font-weight:700;cursor:pointer}
+  .btn.p{background:var(--coral);color:#fff} .btn.p:hover{background:var(--coral-d)}
+  .btn.g{background:#e6f7ee;color:var(--green)} .btn.o{background:#fff;border:1.5px solid var(--line);color:var(--navy)}
+  .btn.s{padding:5px 12px;font-size:.82rem}
+  .btn.full{width:100%;padding:12px}
+  .acts{display:flex;gap:6px;flex-wrap:wrap}
+  .x{border:0;background:transparent;color:#b3a9a0;cursor:pointer;font-size:1.1rem;padding:4px}
+  form.add{display:grid;gap:8px}
+  form.add input{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+  .fld{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+  .fld label{font-weight:600;font-size:.92rem}
+  .fld input{width:120px;padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;text-align:end;background:#fff}
+  .sumrow{display:flex;justify-content:space-between;font-weight:700;margin:5px 0}
+  .pos{color:var(--green)} .neg{color:var(--red)}
+  .note{font-size:.8rem;color:var(--muted)}
+  .empty{text-align:center;color:var(--muted);padding:18px 0}
+  nav.tabs{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:5}
+  nav.tabs button{border:0;background:transparent;padding:9px 2px 8px;color:var(--muted);cursor:pointer;font-weight:700;font-size:.78rem}
+  nav.tabs button span{display:block;font-size:1.3rem;line-height:1.1}
+  nav.tabs button.on{color:var(--coral-d)}
+  .cta{background:var(--navy);color:#fff;border-radius:var(--radius);padding:18px;text-align:center}
+  .cta p{margin:0 0 10px;color:#dfe3ff}
+  .cta a{display:inline-block;background:var(--coral);color:#fff;border-radius:999px;padding:9px 22px;font-weight:700;text-decoration:none}
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+  .link{background:none;border:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div class="row1">
+      <div class="brand"><div class="logo">🌞</div>
+        <div><span data-ar="حضانة الشمس" data-en="Sunshine Nursery">حضانة الشمس</span><small data-ar="تطبيق إدارة الحضانة" data-en="Nursery management app">تطبيق إدارة الحضانة</small></div></div>
+      <div class="chips">
+        <select class="chip" id="cur" aria-label="Currency"><option>AED</option><option>EGP</option><option>USD</option></select>
+        <button class="chip" id="lang" type="button">EN</button>
+      </div>
+    </div>
+  </div>
+  <div class="banner" data-ar="نسخة تجريبية ببيانات وهمية. تقدر تجرّب وتضيف وتعدّل، ومفيش حاجة بتتحفظ خارج جهازك." data-en="Demo version with sample data. Try, add and edit freely. Nothing leaves your device.">نسخة تجريبية ببيانات وهمية.</div>
+
+  <main id="view"></main>
+
+  <nav class="tabs">
+    <button data-tab="home"><span>🏠</span><em style="font-style:normal" data-ar="الرئيسية" data-en="Home">الرئيسية</em></button>
+    <button data-tab="kids"><span>🧒</span><em style="font-style:normal" data-ar="الأطفال" data-en="Children">الأطفال</em></button>
+    <button data-tab="fees"><span>💳</span><em style="font-style:normal" data-ar="المدفوعات" data-en="Payments">المدفوعات</em></button>
+    <button data-tab="budget"><span>📊</span><em style="font-style:normal" data-ar="الميزانية" data-en="Budget">الميزانية</em></button>
+  </nav>
+</div>
+
+<script>
+(function(){
+  var KEY='smbk-demo-v1';
+  var DEFAULT={cur:'AED',lang:'ar',tab:'home',
+    kids:[
+      {id:1,name:{ar:'ليلى أحمد',en:'Layla Ahmed'},parent:{ar:'أحمد علي',en:'Ahmed Ali'},phone:'971500000001',fee:1200,paid:true,present:true},
+      {id:2,name:{ar:'عمر خالد',en:'Omar Khaled'},parent:{ar:'منى سعيد',en:'Mona Saeed'},phone:'971500000002',fee:1200,paid:false,present:true},
+      {id:3,name:{ar:'سارة محمود',en:'Sara Mahmoud'},parent:{ar:'محمود حسن',en:'Mahmoud Hassan'},phone:'971500000003',fee:1500,paid:true,present:false},
+      {id:4,name:{ar:'يوسف هاني',en:'Youssef Hany'},parent:{ar:'هدى إبراهيم',en:'Hoda Ibrahim'},phone:'971500000004',fee:1200,paid:false,present:true},
+      {id:5,name:{ar:'مريم سامي',en:'Mariam Sami'},parent:{ar:'سامي فؤاد',en:'Sami Fouad'},phone:'971500000005',fee:1500,paid:true,present:true},
+      {id:6,name:{ar:'آدم رامي',en:'Adam Ramy'},parent:{ar:'رامي زكريا',en:'Ramy Zakaria'},phone:'971500000006',fee:1200,paid:false,present:false}
+    ],
+    exp:{rent:2500,salaries:3500,supplies:600,other:400}
+  };
+  var S; try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  if(!S||!S.kids) S=JSON.parse(JSON.stringify(DEFAULT));
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+
+  var T={
+    ar:{kids:'الأطفال',present:'حاضرين اليوم',collected:'المحصّل هذا الشهر',unpaid:'لسه ما دفعوش',progress:'نسبة التحصيل',
+      addKid:'إضافة طفل',nameP:'اسم الطفل',parentP:'اسم ولي الأمر',phoneP:'رقم ولي الأمر (بكود الدولة)',feeP:'الرسوم الشهرية',add:'إضافة',
+      paid:'مدفوع',notPaid:'غير مدفوع',markPaid:'تسجيل دفع',remind:'تذكير واتساب',present_:'حاضر',absent:'غائب',
+      payments:'المدفوعات',budget:'ميزانية الشهر',income:'الإيرادات (المحصّل)',rent:'الإيجار',salaries:'المرتبات',supplies:'مستلزمات',other:'مصروفات أخرى',
+      totalExp:'إجمالي المصروفات',profit:'صافي الربح',margin:'هامش الربح',expected:'المتوقع لو الكل دفع',
+      budgetNote:'الإيرادات بتتحسب لوحدها من المدفوعات.',
+      ctaP:'عايز نسخة كده لحضانتك أو مركزك؟ بنجهزها على مقاسك.',ctaB:'كلّمنا على واتساب',reset:'إعادة البيانات التجريبية',
+      noKids:'مفيش أطفال لسه. ضيف أول طفل من فوق.',
+      msg:function(p,k,f,c){return 'السلام عليكم '+p+'، تذكير ودي بموعد سداد رسوم '+k+' لهذا الشهر: '+f+' '+c+'. شكرًا لحضرتك.'},
+      confirmReset:'ترجّع البيانات التجريبية زي أول مرة؟',wa:'أهلاً، جرّبت التطبيق التجريبي للحضانات وعايز أعرف أكتر.'},
+    en:{kids:'Children',present:'Present today',collected:'Collected this month',unpaid:'Still unpaid',progress:'Collection rate',
+      addKid:'Add a child',nameP:'Child name',parentP:'Parent name',phoneP:'Parent phone (with country code)',feeP:'Monthly fee',add:'Add',
+      paid:'Paid',notPaid:'Unpaid',markPaid:'Mark paid',remind:'WhatsApp reminder',present_:'Present',absent:'Absent',
+      payments:'Payments',budget:"This month's budget",income:'Income (collected)',rent:'Rent',salaries:'Salaries',supplies:'Supplies',other:'Other expenses',
+      totalExp:'Total expenses',profit:'Net profit',margin:'Profit margin',expected:'Expected if everyone pays',
+      budgetNote:'Income is calculated automatically from payments.',
+      ctaP:'Want an app like this for your nursery or center? We tailor it to you.',ctaB:'Chat on WhatsApp',reset:'Reset demo data',
+      noKids:'No children yet. Add the first one above.',
+      msg:function(p,k,f,c){return 'Hello '+p+', a friendly reminder that '+k+"'s fee for this month is due: "+f+' '+c+'. Thank you.'},
+      confirmReset:'Reset the demo data to the start?',wa:'Hi, I tried the nursery demo app and would like to know more.'}
+  };
+  var $=function(s,r){return (r||document).querySelector(s)};
+  var view=$('#view');
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function L(){return T[S.lang]}
+  function nm(o){return typeof o==='string'?o:(o[S.lang]||o.ar||o.en)}
+  function money(v){return Math.round(v).toLocaleString(S.lang==='ar'?'ar-EG':'en-US')+' '+S.cur}
+  function num(v){return Math.max(0,parseFloat(v)||0)}
+  function totals(){
+    var c=0,due=0,exp=0,pres=0,unp=0;
+    S.kids.forEach(function(k){due+=k.fee;if(k.paid)c+=k.fee;else unp++;if(k.present)pres++});
+    exp=num(S.exp.rent)+num(S.exp.salaries)+num(S.exp.supplies)+num(S.exp.other);
+    return {collected:c,due:due,exp:exp,profit:c-exp,present:pres,unpaid:unp};
+  }
+  function waLink(k){
+    var l=L();
+    return 'https://wa.me/'+String(k.phone).replace(/\D/g,'')+'?text='+encodeURIComponent(l.msg(nm(k.parent),nm(k.name),k.fee,S.cur));
+  }
+  function initial(k){return esc(nm(k.name).trim().charAt(0))}
+
+  function renderHome(){
+    var l=L(),t=totals(),pct=t.due?Math.round(t.collected/t.due*100):0;
+    return '<h2>'+(S.lang==='ar'?'ملخص النهارده':"Today's summary")+'</h2>'+
+    '<div class="cards">'+
+      '<div class="stat"><div class="n">'+S.kids.length+'</div><div class="l">'+l.kids+'</div></div>'+
+      '<div class="stat good"><div class="n">'+t.present+'</div><div class="l">'+l.present+'</div></div>'+
+      '<div class="stat good"><div class="n" style="font-size:1.2rem">'+money(t.collected)+'</div><div class="l">'+l.collected+'</div></div>'+
+      '<div class="stat warn"><div class="n">'+t.unpaid+'</div><div class="l">'+l.unpaid+'</div></div>'+
+    '</div>'+
+    '<div class="panel"><div class="sumrow"><span>'+l.progress+'</span><span>'+pct+'%</span></div><div class="bar"><i style="width:'+pct+'%"></i></div>'+
+      '<div class="note">'+money(t.collected)+' / '+money(t.due)+'</div></div>'+
+    '<div class="cta"><p>'+l.ctaP+'</p><a href="https://wa.me/19096949303?text='+encodeURIComponent(l.wa)+'" target="_blank" rel="noopener">'+l.ctaB+'</a></div>'+
+    '<div class="foot"><a class="note" href="index.html" style="text-decoration:none">SMBK GROWTH</a><button class="link" data-act="reset">'+l.reset+'</button></div>';
+  }
+  function renderKids(){
+    var l=L(),h='<h2>'+l.kids+'</h2>'+
+    '<div class="panel"><form class="add" id="addForm"><strong>'+l.addKid+'</strong>'+
+      '<input name="name" placeholder="'+esc(l.nameP)+'" required maxlength="60">'+
+      '<input name="parent" placeholder="'+esc(l.parentP)+'" required maxlength="60">'+
+      '<input name="phone" placeholder="'+esc(l.phoneP)+'" inputmode="tel" maxlength="20">'+
+      '<input name="fee" type="number" min="0" placeholder="'+esc(l.feeP)+'" required>'+
+      '<button class="btn p full" type="submit">'+l.add+'</button></form></div>';
+    if(!S.kids.length) return h+'<div class="empty">'+l.noKids+'</div>';
+    h+='<div class="panel">';
+    S.kids.forEach(function(k){
+      h+='<div class="item"><div class="av">'+initial(k)+'</div><div class="info"><div class="nm">'+esc(nm(k.name))+'</div><div class="sm">'+esc(nm(k.parent))+'</div></div>'+
+        '<button class="tag '+(k.present?'ok':'na')+'" style="border:0;cursor:pointer" data-act="toggle" data-id="'+k.id+'">'+(k.present?l.present_:l.absent)+'</button>'+
+        '<button class="x" title="delete" data-act="del" data-id="'+k.id+'">✕</button></div>';
+    });
+    return h+'</div>';
+  }
+  function renderFees(){
+    var l=L(),h='<h2>'+l.payments+'</h2><div class="panel">';
+    if(!S.kids.length) return h+'<div class="empty">'+l.noKids+'</div></div>';
+    S.kids.forEach(function(k){
+      h+='<div class="item" style="flex-wrap:wrap"><div class="av">'+initial(k)+'</div><div class="info"><div class="nm">'+esc(nm(k.name))+'</div><div class="sm">'+money(k.fee)+'</div></div>'+
+        '<span class="tag '+(k.paid?'ok':'no')+'">'+(k.paid?l.paid:l.notPaid)+'</span>'+
+        (k.paid?'':'<div class="acts" style="width:100%;padding-inline-start:50px"><button class="btn g s" data-act="pay" data-id="'+k.id+'">'+l.markPaid+'</button>'+
+        (k.phone?'<a class="btn o s" style="text-decoration:none" target="_blank" rel="noopener" href="'+waLink(k)+'">'+l.remind+'</a>':'')+'</div>')+'</div>';
+    });
+    return h+'</div>';
+  }
+  function renderBudget(){
+    var l=L(),t=totals(),m=t.collected?Math.round(t.profit/t.collected*100):0;
+    function f(key,lab){return '<div class="fld"><label for="e_'+key+'">'+lab+'</label><input id="e_'+key+'" data-exp="'+key+'" type="number" min="0" value="'+num(S.exp[key])+'"></div>'}
+    return '<h2>'+l.budget+'</h2><div class="panel">'+
+      '<div class="sumrow"><span>'+l.income+'</span><span class="pos">'+money(t.collected)+'</span></div>'+
+      '<div class="note">'+l.expected+': '+money(t.due)+'</div></div>'+
+      '<div class="panel">'+f('rent',l.rent)+f('salaries',l.salaries)+f('supplies',l.supplies)+f('other',l.other)+'</div>'+
+      '<div class="panel" id="sum">'+sumHtml()+'<div class="note">'+l.budgetNote+'</div></div>';
+  }
+  function sumHtml(){
+    var l=L(),t=totals(),m=t.collected?Math.round(t.profit/t.collected*100):0;
+    return '<div class="sumrow"><span>'+l.totalExp+'</span><span>'+money(t.exp)+'</span></div>'+
+      '<div class="sumrow"><span>'+l.profit+'</span><span class="'+(t.profit>=0?'pos':'neg')+'">'+money(t.profit)+'</span></div>'+
+      '<div class="sumrow"><span>'+l.margin+'</span><span>'+m+'%</span></div>';
+  }
+
+  function render(){
+    document.documentElement.lang=S.lang;document.documentElement.dir=S.lang==='ar'?'rtl':'ltr';
+    $('#lang').textContent=S.lang==='ar'?'EN':'عربي';
+    $('#cur').value=S.cur;
+    document.querySelectorAll('[data-ar]').forEach(function(el){el.textContent=el.getAttribute('data-'+S.lang)});
+    document.title=(S.lang==='ar'?'تجربة تطبيق الحضانة':'Nursery App Demo')+' | SMBK GROWTH';
+    document.querySelectorAll('nav.tabs button').forEach(function(b){b.classList.toggle('on',b.dataset.tab===S.tab)});
+    view.innerHTML=({home:renderHome,kids:renderKids,fees:renderFees,budget:renderBudget})[S.tab]();
+  }
+
+  document.querySelectorAll('nav.tabs button').forEach(function(b){b.addEventListener('click',function(){S.tab=b.dataset.tab;save();render();window.scrollTo(0,0)})});
+  $('#lang').addEventListener('click',function(){S.lang=S.lang==='ar'?'en':'ar';save();render()});
+  $('#cur').addEventListener('change',function(e){S.cur=e.target.value;save();render()});
+
+  view.addEventListener('click',function(e){
+    var b=e.target.closest('[data-act]');if(!b)return;
+    var id=+b.dataset.id,act=b.dataset.act;
+    if(act==='reset'){if(confirm(L().confirmReset)){S=JSON.parse(JSON.stringify(DEFAULT));save();render()}return}
+    var k=S.kids.filter(function(x){return x.id===id})[0];
+    if(act==='toggle'&&k)k.present=!k.present;
+    if(act==='pay'&&k)k.paid=true;
+    if(act==='del')S.kids=S.kids.filter(function(x){return x.id!==id});
+    save();render();
+  });
+  view.addEventListener('submit',function(e){
+    if(e.target.id!=='addForm')return;e.preventDefault();
+    var f=e.target,d=function(n){return f.elements[n].value.trim()};
+    var id=S.kids.reduce(function(m,k){return Math.max(m,k.id)},0)+1;
+    S.kids.push({id:id,name:d('name'),parent:d('parent'),phone:d('phone'),fee:num(d('fee')),paid:false,present:true});
+    save();render();
+  });
+  view.addEventListener('input',function(e){
+    var k=e.target.dataset&&e.target.dataset.exp;if(!k)return;
+    S.exp[k]=num(e.target.value);save();
+    var s=$('#sum');if(s){s.innerHTML=sumHtml()+'<div class="note">'+L().budgetNote+'</div>'}
+  });
+  render();
+})();
+</script>
+</body>
+</html>
