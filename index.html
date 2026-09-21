@@ -83,6 +83,15 @@
   .step h3{margin:0 0 4px;font-size:1.05rem;color:var(--navy)}
   .step p{margin:0;color:var(--muted);font-size:.95rem}
 
+  .plans{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:stretch}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column}
+  .plan.mid{border:2px solid var(--coral)}
+  .plan h3{margin:0;font-size:1.25rem;color:var(--navy)}
+  .plan .usd{font-size:2.6rem;font-weight:800;color:var(--navy);line-height:1.2;margin-top:8px}
+  .plan .cur{color:var(--muted);font-weight:600;font-size:.95rem}
+  .plan ul.ticks{flex:1;margin:18px 0 22px}
+  .plan .btn{text-align:center}
+  .pnote{color:var(--muted);font-size:.88rem;margin-top:18px}
   .contact{background:var(--navy);color:#fff;text-align:center}
   .contact h2{color:#fff}.contact .sub{color:#dfe3ff;margin-inline:auto}
   .contact .btns{justify-content:center}
@@ -98,6 +107,7 @@
       <a class="hide-sm" href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
       <a class="hide-sm" href="#app" data-ar="التطبيق" data-en="The App">التطبيق</a>
       <a class="hide-sm" href="#work" data-ar="شغلنا" data-en="Our Work">شغلنا</a>
+      <a class="hide-sm" href="#pricing" data-ar="الأسعار" data-en="Pricing">الأسعار</a>
       <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
       <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
     </nav>
@@ -197,6 +207,37 @@
   </div>
 </section>
 
+<section id="pricing">
+  <div class="wrap">
+    <h2 data-ar="باقات تطبيق الحضانة" data-en="Nursery app plans">باقات تطبيق الحضانة</h2>
+    <p class="sub" data-ar="سعر واحد مرة واحدة حسب المميزات اللي تحتاجها." data-en="One price, paid once, based on the features you need.">سعر واحد مرة واحدة حسب المميزات اللي تحتاجها.</p>
+    <div class="plans">
+      <div class="plan ">
+        <h3 data-ar="الأساسي" data-en="Basic">الأساسي</h3>
+        <div class="usd" dir="ltr">$299</div>
+        <div class="cur" dir="ltr">≈ 1,100 AED &nbsp;·&nbsp; ≈ 15,500 EGP</div>
+        <ul class="ticks" data-ar="<li>بيانات الأطفال وأولياء الأمور</li><li>المدفوعات</li><li>إيصالات إلكترونية</li><li>تذكير بدفع الرسوم</li><li>فرع واحد</li><li>عربي وإنجليزي</li>" data-en="<li>Children and parents data</li><li>Payments</li><li>Electronic receipts</li><li>Fee payment reminders</li><li>One branch</li><li>Arabic and English</li>"><li>بيانات الأطفال وأولياء الأمور</li><li>المدفوعات</li><li>إيصالات إلكترونية</li><li>تذكير بدفع الرسوم</li><li>فرع واحد</li><li>عربي وإنجليزي</li></ul>
+        <a class="btn btn-primary" href="https://wa.me/19096949303?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20SMBK%20Growth%D8%8C%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A9%20%2F%20Hi%2C%20I%20am%20interested%20in%20the%20Basic%20plan" target="_blank" rel="noopener" data-ar="اطلب الباقة" data-en="Request this plan">اطلب الباقة</a>
+      </div>
+      <div class="plan mid">
+        <h3 data-ar="المتوسط" data-en="Standard">المتوسط</h3>
+        <div class="usd" dir="ltr">$699</div>
+        <div class="cur" dir="ltr">≈ 2,570 AED &nbsp;·&nbsp; ≈ 36,500 EGP</div>
+        <ul class="ticks" data-ar="<li><b>كل الأساسي</b> ومعاه:</li><li>غياب الأطفال</li><li>رسالة لأولياء أمور الأطفال الغايبين</li><li>غياب الموظفين</li><li>المصروفات والإدخالات</li><li>ميزانية شهرية وسنوية</li>" data-en="<li><b>Everything in Basic</b> plus:</li><li>Children absence tracking</li><li>Message to parents of absent children</li><li>Staff absence tracking</li><li>Expenses and entries</li><li>Monthly and yearly budget</li>"><li><b>كل الأساسي</b> ومعاه:</li><li>غياب الأطفال</li><li>رسالة لأولياء أمور الأطفال الغايبين</li><li>غياب الموظفين</li><li>المصروفات والإدخالات</li><li>ميزانية شهرية وسنوية</li></ul>
+        <a class="btn btn-primary" href="https://wa.me/19096949303?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20SMBK%20Growth%D8%8C%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%85%D8%AA%D9%88%D8%B3%D8%B7%D8%A9%20%2F%20Hi%2C%20I%20am%20interested%20in%20the%20Standard%20plan" target="_blank" rel="noopener" data-ar="اطلب الباقة" data-en="Request this plan">اطلب الباقة</a>
+      </div>
+      <div class="plan ">
+        <h3 data-ar="الكامل" data-en="Premium">الكامل</h3>
+        <div class="usd" dir="ltr">$1499</div>
+        <div class="cur" dir="ltr">≈ 5,500 AED &nbsp;·&nbsp; ≈ 78,000 EGP</div>
+        <ul class="ticks" data-ar="<li><b>كل المتوسط</b> ومعاه:</li><li>تقييمات نمو شهرية للأطفال</li><li>بيانات الموظفين</li><li>تذكير بانتهاء عقود العمل</li><li>كل مستندات الحضانة</li>" data-en="<li><b>Everything in Standard</b> plus:</li><li>Monthly child development evaluations</li><li>Staff records</li><li>Employment contract expiry reminders</li><li>All nursery documents</li>"><li><b>كل المتوسط</b> ومعاه:</li><li>تقييمات نمو شهرية للأطفال</li><li>بيانات الموظفين</li><li>تذكير بانتهاء عقود العمل</li><li>كل مستندات الحضانة</li></ul>
+        <a class="btn btn-primary" href="https://wa.me/19096949303?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20SMBK%20Growth%D8%8C%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%A7%D9%84%D8%A8%D8%A7%D9%82%D8%A9%20%D8%A7%D9%84%D9%83%D8%A7%D9%85%D9%84%D8%A9%20%2F%20Hi%2C%20I%20am%20interested%20in%20the%20Premium%20plan" target="_blank" rel="noopener" data-ar="اطلب الباقة" data-en="Request this plan">اطلب الباقة</a>
+      </div>
+    </div>
+    <p class="pnote" data-ar="السعر الأساسي بالدولار. الدرهم والجنيه تقريبي حسب سعر الصرف وقت التعاقد. الاستشارة الأولى مجانية." data-en="The base price is in US dollars. AED and EGP are approximate, based on the exchange rate at signing. First consultation is free.">السعر الأساسي بالدولار.</p>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
     <h2 data-ar="خلينا نتكلم عن مشروعك" data-en="Let's talk about your business">خلينا نتكلم عن مشروعك</h2>
@@ -211,7 +252,7 @@
 </section>
 </main>
 
-<footer>© <span id="yr"></span> SMBK GROWTH · Small business. Big growth.</footer>
+<footer dir="ltr">© <span id="yr"></span> SMBK GROWTH · Small business. Big growth.</footer>
 
 <script>
 (function(){
